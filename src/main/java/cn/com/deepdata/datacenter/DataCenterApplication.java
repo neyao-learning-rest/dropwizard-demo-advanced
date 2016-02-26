@@ -1,5 +1,6 @@
 package cn.com.deepdata.datacenter;
 
+import cn.com.deepdata.datacenter.example.TemplateHealthCheck;
 import cn.com.deepdata.datacenter.resources.WeixinResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -32,6 +33,8 @@ public class DataCenterApplication extends Application<DataCenterConfiguration> 
         final WeixinResource resource = new WeixinResource(configuration.getTemplate(), configuration.getDefaultName());
         environment.jersey().register(resource);
 
+        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
+        environment.healthChecks().register("tttt", healthCheck);
     }
 
 }
