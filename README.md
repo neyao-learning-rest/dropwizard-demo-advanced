@@ -8,7 +8,7 @@
 
 运行方式
 ----
-**在开发环境中，以Jar包的方式运行**
+**在开发环境中，以Jar包的方式运行**  
 java -jar target/infra-api-1.0.0.jar server target\classes\infra-api.yml
 
 启动之后，在浏览器中访问以下地址，即可访问 HelloWorldResource中定义的资源：
