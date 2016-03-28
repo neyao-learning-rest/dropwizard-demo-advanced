@@ -12,11 +12,11 @@ public class ErrorMessage {
     public static ErrorMessage PARAMETER_SHOULD_NOT_BE_NULL = new ErrorMessage("parameter_should_not_be_null");
 
     /**
-     * ´íÎóµÄ¼òÒªÃèÊö
+     * é”™è¯¯çš„ç®€è¦æè¿°
      */
     private String message;
     /**
-     * ´íÎóµÄ¾ßÌåĞÅÏ¢
+     * é”™è¯¯çš„å…·ä½“ä¿¡æ¯
      */
     private String detail;
 
