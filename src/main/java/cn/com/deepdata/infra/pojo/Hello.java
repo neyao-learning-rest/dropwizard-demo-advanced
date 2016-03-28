@@ -1,20 +1,20 @@
-package cn.com.deepdata.datacenter.api;
+package cn.com.deepdata.infra.pojo;
 
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Saying {
+public class Hello {
 	private long id;
 
 	@Length(max = 3)
 	private String content;
 
-	public Saying() {
+	public Hello() {
 		// Jackson deserialization
 	}
 
-	public Saying(long id, String content) {
+	public Hello(long id, String content) {
 		this.id = id;
 		this.content = content;
 	}

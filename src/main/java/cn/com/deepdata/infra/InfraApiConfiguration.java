@@ -1,9 +1,9 @@
-package cn.com.deepdata.datacenter;
+package cn.com.deepdata.infra;
 
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class DataCenterConfiguration extends Configuration {
+public class InfraApiConfiguration extends Configuration {
 
     @NotEmpty
     private String template;

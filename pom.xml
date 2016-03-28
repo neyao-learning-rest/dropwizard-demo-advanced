@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.com.deepdata.datacenter</groupId>
-    <artifactId>datacenter-api</artifactId>
+    <groupId>cn.com.deepdata.infra</groupId>
+    <artifactId>infra-api</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>DataCenter</name>
@@ -25,6 +25,14 @@
             <artifactId>dropwizard-core</artifactId>
             <version>${dropwizard.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -58,7 +66,7 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>cn.com.deepdata.datacenter.DataCenterApplication</mainClass>
+                                    <mainClass>cn.com.deepdata.infra.InfraApiApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

@@ -1,4 +1,4 @@
-package cn.com.deepdata.datacenter.example;
+package cn.com.deepdata.infra.example;
 
 /**
  * Created by admin on 2016/2/26.
