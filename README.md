@@ -1,29 +1,29 @@
-ÏîÄ¿ËµÃ÷
+é¡¹ç›®è¯´æ˜
 ----
-Êı¾İÖĞĞÄµÄAPI·şÎñ£¬¶ÔÍâÌá¹©REST API·şÎñ
+æ•°æ®ä¸­å¿ƒçš„APIæœåŠ¡ï¼Œå¯¹å¤–æä¾›REST APIæœåŠ¡
 
-¹¹½¨·½Ê½
+æ„å»ºæ–¹å¼
 ----
-±ê×¼µÄmaven¹¤³Ì¹¹½¨·½Ê½
+æ ‡å‡†çš„mavenå·¥ç¨‹æ„å»ºæ–¹å¼
 
-ÔËĞĞ·½Ê½
+è¿è¡Œæ–¹å¼
 ----
-**ÔÚ¿ª·¢»·¾³ÖĞ£¬ÒÔJar°üµÄ·½Ê½ÔËĞĞ**
+**åœ¨å¼€å‘ç¯å¢ƒä¸­ï¼Œä»¥JaråŒ…çš„æ–¹å¼è¿è¡Œ**
 java -jar target/infra-api-1.0.0.jar server target\classes\infra-api.yml
 
-Æô¶¯Ö®ºó£¬ÔÚä¯ÀÀÆ÷ÖĞ·ÃÎÊÒÔÏÂµØÖ·£¬¼´¿É·ÃÎÊ HelloWorldResourceÖĞ¶¨ÒåµÄ×ÊÔ´£º
+å¯åŠ¨ä¹‹åï¼Œåœ¨æµè§ˆå™¨ä¸­è®¿é—®ä»¥ä¸‹åœ°å€ï¼Œå³å¯è®¿é—® HelloWorldResourceä¸­å®šä¹‰çš„èµ„æºï¼š
 - http://localhost:8080/hello/v1/say 
 - http://localhost:8080/hello/v2/say 
 
-¹Ø¼ü´úÂë
+å…³é”®ä»£ç 
 ----
-**ºËĞÄÀà**
-- cn.com.deepdata.infra.InfraApiApplication£ºÆô¶¯Àà
-- cn.com.deepdata.infra.InfraApiConfiguration£ºÅäÖÃÀà£¬ÓÉ¿ò¼Ü¸ù¾İ infra-api.yml×Ô¶¯½âÎö
-- infra-api.yml£ºÅäÖÃÎÄ¼ş
+**æ ¸å¿ƒç±»**
+- cn.com.deepdata.infra.InfraApiApplicationï¼šå¯åŠ¨ç±»
+- cn.com.deepdata.infra.InfraApiConfigurationï¼šé…ç½®ç±»ï¼Œç”±æ¡†æ¶æ ¹æ® infra-api.ymlè‡ªåŠ¨è§£æ
+- infra-api.ymlï¼šé…ç½®æ–‡ä»¶
 
 
-**Ê¾Àı´úÂë**
-- cn.com.deepdata.infra.resources.example.HelloWorldResource£ºÊ¾Àı´úÂë
+**ç¤ºä¾‹ä»£ç **
+- cn.com.deepdata.infra.resources.example.HelloWorldResourceï¼šç¤ºä¾‹ä»£ç 
 
 
