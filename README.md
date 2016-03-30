@@ -1,6 +1,6 @@
 项目说明
 ----
-数据中心的API服务，对外提供REST API服务
+微信的后端服务，对要推送的企业风险进行计算，供前端应用读取。
 
 构建方式
 ----
@@ -9,7 +9,7 @@
 运行方式
 ----
 **在开发环境中，以Jar包的方式运行**  
-java -jar target/infra-api-1.0.0.jar server target\classes\infra-api.yml
+java -jar target/weixin-backend-1.0.0.jar server target\classes\wenxin-backend.yml
 
 启动之后，在浏览器中访问以下地址，即可访问 HelloWorldResource中定义的资源：
 - http://localhost:8080/hello/v1/say 

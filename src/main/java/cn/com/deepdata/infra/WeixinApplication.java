@@ -6,10 +6,10 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class InfraApiApplication extends Application<InfraApiConfiguration> {
+public class WeixinApplication extends Application<WeixinConfiguration> {
 
     public static void main(String[] args) throws Exception {
-        new InfraApiApplication().run(args);
+        new WeixinApplication().run(args);
     }
 
     @Override
@@ -18,12 +18,12 @@ public class InfraApiApplication extends Application<InfraApiConfiguration> {
     }
 
     @Override
-    public void initialize(Bootstrap<InfraApiConfiguration> bootstrap) {
+    public void initialize(Bootstrap<WeixinConfiguration> bootstrap) {
         // nothing to do yet
     }
 
     @Override
-    public void run(InfraApiConfiguration configuration,
+    public void run(WeixinConfiguration configuration,
                     Environment environment) throws Exception {
 
         System.out.println("configuration" + configuration);

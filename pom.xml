@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.com.deepdata.front</groupId>
-    <artifactId>wenxin-backend</artifactId>
+    <artifactId>weixin-backend</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>Weixin Backend</name>
@@ -24,6 +24,17 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
             <version>${dropwizard.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-hibernate</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.36</version>
         </dependency>
 
        
@@ -61,7 +72,7 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>cn.com.deepdata.infra.InfraApiApplication</mainClass>
+                                    <mainClass>cn.com.deepdata.infra.WeixinApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

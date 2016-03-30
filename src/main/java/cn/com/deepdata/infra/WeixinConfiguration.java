@@ -3,7 +3,7 @@ package cn.com.deepdata.infra;
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class InfraApiConfiguration extends Configuration {
+public class WeixinConfiguration extends Configuration {
 
     @NotEmpty
     private String template;
