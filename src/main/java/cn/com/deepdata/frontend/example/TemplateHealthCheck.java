@@ -1,4 +1,4 @@
-package cn.com.deepdata.infra.example;
+package cn.com.deepdata.frontend.example;
 
 import com.codahale.metrics.health.HealthCheck;
 

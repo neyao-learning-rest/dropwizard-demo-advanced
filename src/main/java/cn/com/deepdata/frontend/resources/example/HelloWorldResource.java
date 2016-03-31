@@ -1,7 +1,9 @@
-package cn.com.deepdata.infra.resources.example;
+package cn.com.deepdata.frontend.resources.example;
 
-import java.net.HttpURLConnection;
-import java.util.concurrent.atomic.AtomicLong;
+import cn.com.deepdata.frontend.exception.ErrorMessage;
+import cn.com.deepdata.frontend.pojo.Hello;
+import com.codahale.metrics.annotation.Timed;
+import com.google.common.base.Optional;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,13 +12,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import cn.com.deepdata.infra.exception.ErrorMessage;
-import cn.com.deepdata.infra.exception.sub.EntityNotFoundException;
-import cn.com.deepdata.infra.pojo.Hello;
-
-import com.codahale.metrics.annotation.Timed;
-import com.google.common.base.Optional;
+import java.net.HttpURLConnection;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Path("/hello")
 @Produces(MediaType.APPLICATION_JSON)
@@ -46,8 +43,6 @@ public class HelloWorldResource {
     public Hello sayHello(@QueryParam("name") String name) {
         final String value = String.format(template, name);
 
-        if("404".equals(name))
-            throw new EntityNotFoundException();
 
         if (name == null) {
             throw new WebApplicationException(

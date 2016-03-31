@@ -1,0 +1,66 @@
+template: Hello, TEST, %s!
+defaultName: Stranger
+
+#============= Server settings ================
+server:
+  minThreads: 1
+  maxThreads: 64
+  adminContextPath: /admin
+  applicationContextPath: /weixin-backend
+  applicationConnectors:
+    - type: http
+      port: 9090
+
+#============ Logging settings ===============
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+  # Logger-specific levels.
+  loggers:
+    # Overrides the level of com.example.dw.Thing and sets it to DEBUG.
+    "cn.com.deepdata.frontend.resources.WeixinResource": DEBUG
+    "com.sun.jersey": DEBUG
+
+  appenders:
+    - type: file
+      # The file to which current statements will be logged.
+      currentLogFilename: ./logs/weixin-backend.log
+      # When the log file rotates, the archived log will be renamed to this and gzipped. The
+      # %d is replaced with the previous day (yyyy-MM-dd). Custom rolling windows can be created
+      # by passing a SimpleDateFormat-compatible format as an argument: "%d{yyyy-MM-dd-hh}".
+      archivedLogFilenamePattern: ./logs/weixin-backend-%d.log.gz
+      # The number of archived files to keep.
+      archivedFileCount: 5
+      # The timezone used to format dates. HINT: USE THE DEFAULT, UTC.
+      timeZone: UTC
+
+
+#============================= Database settings===================
+database:
+    # the name of the JDBC driver, mysql in our case
+  driverClass: com.mysql.jdbc.Driver
+  user: root
+  password: 111111
+  url: jdbc:mysql://localhost:3306/testdb
+
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    #设置为update时，能够自动创建表和增量添加字段
+    #hibernate.hbm2ddl.auto: update
+
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 1s
+
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+
+  # the minimum number of connections to keep open
+  minSize: 8
+
+  # the maximum number of connections to keep open
+  maxSize: 32
+
+  # whether or not idle connections should be validated
+  checkConnectionWhileIdle: false

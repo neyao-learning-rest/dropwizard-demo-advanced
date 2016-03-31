@@ -12,7 +12,7 @@ server:
       port: 8080
 
 
-# ===== Database settings =====
+# Database settings.
 database:
     # the name of the JDBC driver
   driverClass: oracle.jdbc.driver.OracleDriver
@@ -28,7 +28,7 @@ database:
   maxWaitForConnection: 1s
 
   # the SQL query to run when validating a connection's liveness
-  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+  validationQuery: "/* MyApplication Health Check */ select 1 from dual"
 
   # the minimum number of connections to keep open
   minSize: 8
@@ -38,4 +38,3 @@ database:
 
   # whether or not idle connections should be validated
   checkConnectionWhileIdle: false
-

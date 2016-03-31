@@ -1,4 +1,4 @@
-package cn.com.deepdata.infra.pojo;
+package cn.com.deepdata.frontend.pojo;
 
 import org.hibernate.validator.constraints.Length;
 
