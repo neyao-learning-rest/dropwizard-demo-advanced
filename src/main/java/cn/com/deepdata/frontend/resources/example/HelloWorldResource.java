@@ -1,7 +1,6 @@
 package cn.com.deepdata.frontend.resources.example;
 
 import cn.com.deepdata.frontend.dao.UserDAO;
-import cn.com.deepdata.frontend.entity.RiskMes;
 import cn.com.deepdata.frontend.entity.User;
 import cn.com.deepdata.frontend.exception.ErrorMessage;
 import cn.com.deepdata.frontend.exception.ErrorMessages;
@@ -19,7 +18,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.HttpURLConnection;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Path("/hello")
@@ -59,7 +59,7 @@ public class HelloWorldResource {
             errors.addError(ErrorMessage.RESULT_IS_EMPTY);
 
             throw new WebApplicationException(
-                    Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(errors).build()
+                    Response.status(Response.Status.BAD_REQUEST).entity(errors).build()
                     );
         }
 
@@ -78,6 +78,22 @@ public class HelloWorldResource {
 
         userDAO.saveOrUpdate(user);
         return user;
+
+
+    }
+
+    /**
+     * 记录推送起了的信息
+     */
+    @POST
+    @Timed
+    @Path("/v1/users")
+    @UnitOfWork
+    public Response recordSentRisk(List<User> users) {
+
+        System.out.println("Arrays.toString(users) = " + users);
+
+        return Response.status(Response.Status.OK).build();
 
 
     }
