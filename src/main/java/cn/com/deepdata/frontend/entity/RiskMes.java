@@ -1,5 +1,8 @@
 package cn.com.deepdata.frontend.entity;
 
+import io.dropwizard.jackson.JsonSnakeCase;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,12 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
+ * 待推送的风险企业，包含各个风险类型的风险值。<br>
+ * <br>
+ * 1. 该表只由中间层写入
+ * 2. 完成推送之后，不会删除该表这中的记录。下一次会有中间层来update。
+ *
+ *
+ *
  * Created by neyao@github.com on 2016/3/30.
  */
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "WARNING_MES")
 @NamedQueries({
@@ -22,6 +34,7 @@ import java.util.Date;
                 query = "select r from RiskMes r"
         )
 })
+@JsonSnakeCase
 public class RiskMes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +44,7 @@ public class RiskMes {
     /**
      * 客户ID
      */
+    @NotNull
     @Column(name = "CUSTOMER_ID")
     private long customerId;
 
@@ -43,6 +57,7 @@ public class RiskMes {
     /**
      * 综合风险
      */
+    @NotEmpty
     @Column(name = "INTEGRATED_RISK")
     private BigDecimal integratedRisk;
 

@@ -1,6 +1,6 @@
 项目说明
 ----
-微信的后端服务，对要推送的企业风险进行计算，供前端应用读取。
+前端应用的REST API服务，提供一些计算密集型的服务。
 
 构建方式
 ----
@@ -9,7 +9,7 @@
 运行方式
 ----
 **在开发环境中，以Jar包的方式运行**  
-java -jar target/fronted-api-1.0.0.jar server target\classes\frontend-api.yml
+java -jar target/frontend-api-1.0.0.jar server target\classes\frontend-api.yml
 
 启动之后，在浏览器中访问以下地址，即可访问 HelloWorldResource中定义的资源：
 - http://localhost:8080/hello/v1/say 

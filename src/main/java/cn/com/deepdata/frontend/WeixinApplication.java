@@ -1,6 +1,7 @@
 package cn.com.deepdata.frontend;
 
 import cn.com.deepdata.frontend.dao.RiskMesDAO;
+import cn.com.deepdata.frontend.dao.UserDAO;
 import cn.com.deepdata.frontend.example.TemplateHealthCheck;
 import cn.com.deepdata.frontend.resources.example.HelloWorldResource;
 import cn.com.deepdata.frontend.resources.WeixinResource;
@@ -49,14 +50,15 @@ public class WeixinApplication extends Application<WeixinConfiguration> {
 
         System.out.println("configuration" + configuration);
 
-        final HelloWorldResource resource = new HelloWorldResource(configuration.getTemplate(), configuration.getDefaultName());
+        final RiskMesDAO riskMesDAO = new RiskMesDAO(hibernateBundle.getSessionFactory());
+        final UserDAO userDAO = new UserDAO(hibernateBundle.getSessionFactory());
+
+        final HelloWorldResource resource = new HelloWorldResource(configuration.getTemplate(), configuration.getDefaultName(),userDAO);
         environment.jersey().register(resource);
 
-//        final UserDAO userDAO = new UserDAO(hibernateBundle.getSessionFactory());
 //        final UserResource userResource = new UserResource(userDAO);
 //        environment.jersey().register(userResource);
 
-        final RiskMesDAO riskMesDAO = new RiskMesDAO(hibernateBundle.getSessionFactory());
         final WeixinResource weixinResource = new WeixinResource(riskMesDAO);
         environment.jersey().register(weixinResource);
 

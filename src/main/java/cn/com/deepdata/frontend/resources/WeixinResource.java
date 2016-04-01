@@ -11,6 +11,7 @@ import io.dropwizard.jersey.params.LongParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -76,10 +77,10 @@ public class WeixinResource {
     @Timed
     @Path("/v1/riskmes")
     @UnitOfWork
-    public RiskMes recordSentRisk(RiskMes message) {
+    public RiskMes recordSentRisk(@Valid RiskMes message) {
 
         logger.debug("WeixinSentMessage = " + message);
-
+        riskMesDAO.saveOrUpdate(message);
         return message;
 
 

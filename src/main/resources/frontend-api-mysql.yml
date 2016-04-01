@@ -6,7 +6,7 @@ server:
   minThreads: 1
   maxThreads: 64
   adminContextPath: /admin
-  applicationContextPath: /weixin-backend
+  applicationContextPath: /front
   applicationConnectors:
     - type: http
       port: 9090
@@ -20,7 +20,7 @@ logging:
   loggers:
     # Overrides the level of com.example.dw.Thing and sets it to DEBUG.
     "cn.com.deepdata.frontend.resources.WeixinResource": DEBUG
-    "com.sun.jersey": DEBUG
+    #"com.sun.jersey": DEBUG
 
   appenders:
     - type: file
@@ -48,7 +48,7 @@ database:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
     #设置为update时，能够自动创建表和增量添加字段
-    #hibernate.hbm2ddl.auto: update
+    hibernate.hbm2ddl.auto: update
 
   # the maximum amount of time to wait on an empty pool before throwing an exception
   maxWaitForConnection: 1s

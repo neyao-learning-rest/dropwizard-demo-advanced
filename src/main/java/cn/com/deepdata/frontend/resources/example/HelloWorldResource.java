@@ -1,11 +1,18 @@
 package cn.com.deepdata.frontend.resources.example;
 
+import cn.com.deepdata.frontend.dao.UserDAO;
+import cn.com.deepdata.frontend.entity.RiskMes;
+import cn.com.deepdata.frontend.entity.User;
 import cn.com.deepdata.frontend.exception.ErrorMessage;
+import cn.com.deepdata.frontend.exception.ErrorMessages;
 import cn.com.deepdata.frontend.pojo.Hello;
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
+import io.dropwizard.hibernate.UnitOfWork;
 
+import javax.validation.Valid;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -21,11 +28,13 @@ public class HelloWorldResource {
     private final AtomicLong counter;
     private final String template;
     private final String defaultName;
+    private UserDAO userDAO;
 
-    public HelloWorldResource(String template, String defaultName) {
+    public HelloWorldResource(String template, String defaultName, UserDAO userDAO) {
         this.template = template;
         this.defaultName = defaultName;
         this.counter = new AtomicLong();
+        this.userDAO = userDAO;
     }
     
     @GET
@@ -45,13 +54,31 @@ public class HelloWorldResource {
 
 
         if (name == null) {
+            ErrorMessages errors = new ErrorMessages();
+            errors.addError(ErrorMessage.PARAMETER_SHOULD_NOT_BE_NULL);
+            errors.addError(ErrorMessage.RESULT_IS_EMPTY);
+
             throw new WebApplicationException(
-                    Response.status(HttpURLConnection.HTTP_BAD_REQUEST)
-                            .entity(ErrorMessage.PARAMETER_SHOULD_NOT_BE_NULL)
-                            .build()
-            );
+                    Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(errors).build()
+                    );
         }
 
         return new Hello(counter.incrementAndGet(), value);
+    }
+
+
+    /**
+     * 记录推送起了的信息
+     */
+    @POST
+    @Timed
+    @Path("/v1/user")
+    @UnitOfWork
+    public User recordSentRisk(@Valid User user) {
+
+        userDAO.saveOrUpdate(user);
+        return user;
+
+
     }
 }

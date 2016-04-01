@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by neyao@github.com on 2016/3/30.
  */
-public class RiskMesDAO extends AbstractDAO<RiskMes> {
+public class RiskMesDAO extends CommonDAO<RiskMes> {
 
     public RiskMesDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
@@ -19,8 +19,6 @@ public class RiskMesDAO extends AbstractDAO<RiskMes> {
         return list(namedQuery("cn.com.deepdata.frontend.entity.RiskMes.findAll"));
     }
 
-    public RiskMes findById(long id) {
-        return get(id);
-    }
+
 
 }

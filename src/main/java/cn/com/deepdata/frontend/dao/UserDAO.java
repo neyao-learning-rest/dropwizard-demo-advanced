@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by neyao@github.com on 2016/3/30.
  */
-public class UserDAO extends AbstractDAO<User> {
+public class UserDAO extends CommonDAO<User> {
 
     public UserDAO(SessionFactory sessionFactory) {
         super(sessionFactory);

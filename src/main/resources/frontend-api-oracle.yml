@@ -1,17 +1,40 @@
 template: Hello, TEST, %s!
 defaultName: Stranger
 
-
+#============= Server settings ================
 server:
   minThreads: 1
   maxThreads: 64
   adminContextPath: /admin
-  applicationContextPath: /weixin-backend
+  applicationContextPath: /front
   applicationConnectors:
     - type: http
-      port: 8080
+      port: 9090
 
 
+#============ Logging settings ===============
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+  # Logger-specific levels.
+  loggers:
+    # Overrides the level of com.example.dw.Thing and sets it to DEBUG.
+    "cn.com.deepdata.frontend.resources.WeixinResource": DEBUG
+    #"com.sun.jersey": DEBUG
+
+  appenders:
+    - type: file
+      # The file to which current statements will be logged.
+      currentLogFilename: ./logs/frontend-api.log
+      # When the log file rotates, the archived log will be renamed to this and gzipped. The
+      # %d is replaced with the previous day (yyyy-MM-dd). Custom rolling windows can be created
+      # by passing a SimpleDateFormat-compatible format as an argument: "%d{yyyy-MM-dd-hh}".
+      archivedLogFilenamePattern: ./logs/frontend-api-%d.log.gz
+      # The number of archived files to keep.
+      archivedFileCount: 5
+      # The timezone used to format dates. HINT: USE THE DEFAULT, UTC.
+      timeZone: UTC
 # Database settings.
 database:
     # the name of the JDBC driver
@@ -23,6 +46,8 @@ database:
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.Oracle10gDialect
+    #设置为update时，能够自动创建表和增量添加字段
+    hibernate.hbm2ddl.auto: update
 
   # the maximum amount of time to wait on an empty pool before throwing an exception
   maxWaitForConnection: 1s
