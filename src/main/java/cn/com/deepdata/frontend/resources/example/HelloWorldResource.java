@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Path("/hello")
+@Path("/hello/v1")
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloWorldResource {
     private final AtomicLong counter;
@@ -38,7 +38,7 @@ public class HelloWorldResource {
     
     @GET
     @Timed
-    @Path("/v1/say")
+    @Path("/say")
     public Hello sayHello(@QueryParam("name") Optional<String> name) {
         final String value = String.format(template, name.or(defaultName));
         return new Hello(counter.incrementAndGet(), value);

@@ -1,5 +1,7 @@
 package cn.com.deepdata.frontend.entity;
 
+import io.dropwizard.jackson.JsonSnakeCase;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -25,6 +28,7 @@ import java.util.Date;
                 query = "select r from WarningHistory r"
         )
 })
+@JsonSnakeCase
 public class WarningHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +38,7 @@ public class WarningHistory {
     /**
      * 微信用户的Id
      */
-    @NotNull
+    @Min(1)
     @Column(name = "USER_ID", nullable = false)
     private long userId;
 
@@ -55,9 +59,9 @@ public class WarningHistory {
     /**
      * 客户Id（即企业Id）
      */
-    @NotNull
+    @Min(1)
     @Column(name="CUSTOMER_ID")
-    private String customerId;
+    private long customerId;
 
     /**
      * @deprecated
@@ -116,11 +120,11 @@ public class WarningHistory {
         this.riskValue = riskValue;
     }
 
-    public String getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
@@ -154,5 +158,20 @@ public class WarningHistory {
 
     public void setRiskRanking(BigDecimal riskRanking) {
         this.riskRanking = riskRanking;
+    }
+
+    @Override
+    public String toString() {
+        return "WarningHistory{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", wRead=" + wRead +
+                ", riskValue='" + riskValue + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", wMark=" + wMark +
+                ", added=" + added +
+                ", pinner='" + pinner + '\'' +
+                ", riskRanking=" + riskRanking +
+                '}';
     }
 }

@@ -61,14 +61,14 @@ public class WarningLog {
      */
     @NotNull
     @Column(name="CUSTOMER_ID")
-    private String customerId;
+    private long customerId;
 
     /**
      * @deprecated
      * 是否移除？
      */
     @Column(name="W_MARK")
-    private BigDecimal wMark;
+    private long wMark;
 
     /**
      * 创建时间
@@ -147,19 +147,19 @@ public class WarningLog {
         this.riskValue = riskValue;
     }
 
-    public String getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
-    public BigDecimal getwMark() {
+    public long getwMark() {
         return wMark;
     }
 
-    public void setwMark(BigDecimal wMark) {
+    public void setwMark(long wMark) {
         this.wMark = wMark;
     }
 
@@ -217,5 +217,24 @@ public class WarningLog {
 
     public void setRiskRanking(BigDecimal riskRanking) {
         this.riskRanking = riskRanking;
+    }
+
+    @Override
+    public String toString() {
+        return "WarningLog{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", wRead=" + wRead +
+                ", riskValue='" + riskValue + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", wMark=" + wMark +
+                ", added=" + added +
+                ", updated=" + updated +
+                ", innerRisk='" + innerRisk + '\'' +
+                ", regionRisk='" + regionRisk + '\'' +
+                ", industeryRisk='" + industeryRisk + '\'' +
+                ", pinner='" + pinner + '\'' +
+                ", riskRanking=" + riskRanking +
+                '}';
     }
 }
