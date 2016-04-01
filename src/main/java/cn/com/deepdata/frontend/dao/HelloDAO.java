@@ -7,11 +7,12 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 /**
+ * HellowWorld Service
  * Created by neyao@github.com on 2016/3/30.
  */
-public class UserDAO extends CommonDAO<User> {
+public class HelloDAO extends CommonDAO<User> {
 
-    public UserDAO(SessionFactory sessionFactory) {
+    public HelloDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 

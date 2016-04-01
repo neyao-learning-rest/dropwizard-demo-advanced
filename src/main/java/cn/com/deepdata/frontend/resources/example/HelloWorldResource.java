@@ -1,6 +1,6 @@
 package cn.com.deepdata.frontend.resources.example;
 
-import cn.com.deepdata.frontend.dao.UserDAO;
+import cn.com.deepdata.frontend.dao.HelloDAO;
 import cn.com.deepdata.frontend.entity.User;
 import cn.com.deepdata.frontend.exception.ErrorMessage;
 import cn.com.deepdata.frontend.exception.ErrorMessages;
@@ -18,7 +18,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -28,13 +27,13 @@ public class HelloWorldResource {
     private final AtomicLong counter;
     private final String template;
     private final String defaultName;
-    private UserDAO userDAO;
+    private HelloDAO helloDAO;
 
-    public HelloWorldResource(String template, String defaultName, UserDAO userDAO) {
+    public HelloWorldResource(String template, String defaultName, HelloDAO helloDAO) {
         this.template = template;
         this.defaultName = defaultName;
         this.counter = new AtomicLong();
-        this.userDAO = userDAO;
+        this.helloDAO = helloDAO;
     }
     
     @GET
@@ -76,7 +75,7 @@ public class HelloWorldResource {
     @UnitOfWork
     public User recordSentRisk(@Valid User user) {
 
-        userDAO.saveOrUpdate(user);
+        helloDAO.saveOrUpdate(user);
         return user;
 
 

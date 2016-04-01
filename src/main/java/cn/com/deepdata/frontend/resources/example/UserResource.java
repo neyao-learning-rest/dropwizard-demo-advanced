@@ -1,6 +1,6 @@
 package cn.com.deepdata.frontend.resources.example;
 
-import cn.com.deepdata.frontend.dao.UserDAO;
+import cn.com.deepdata.frontend.dao.HelloDAO;
 import cn.com.deepdata.frontend.entity.User;
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
@@ -19,12 +19,12 @@ import java.util.concurrent.atomic.AtomicLong;
 public class UserResource {
     private final AtomicLong counter;
 
-    private UserDAO userDAO;
+    private HelloDAO helloDAO;
 
 
-    public UserResource(UserDAO userDAO) {
+    public UserResource(HelloDAO helloDAO) {
         this.counter = new AtomicLong();
-        this.userDAO = userDAO;
+        this.helloDAO = helloDAO;
     }
     
     @GET
@@ -32,7 +32,7 @@ public class UserResource {
     @Path("/v1/list")
     @UnitOfWork
     public List<User> list(@QueryParam("name") Optional<String> name) {
-        return userDAO.list();
+        return helloDAO.list();
     }
 
 }

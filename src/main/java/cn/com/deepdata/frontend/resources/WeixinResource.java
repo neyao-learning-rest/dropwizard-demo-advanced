@@ -1,9 +1,8 @@
 package cn.com.deepdata.frontend.resources;
 
-import cn.com.deepdata.frontend.dao.RiskMesDAO;
 import cn.com.deepdata.frontend.entity.RiskMes;
 import cn.com.deepdata.frontend.exception.ErrorMessage;
-import cn.com.deepdata.frontend.pojo.WeixinSentMessage;
+import cn.com.deepdata.frontend.service.WeiXinService;
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -12,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.validation.Valid;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,11 +29,14 @@ public class WeixinResource {
     private static final Logger logger = LoggerFactory.getLogger(WeixinResource.class);
 
     private final AtomicLong counter;
-    private RiskMesDAO riskMesDAO;
+    private WeiXinService weiXinService;
 
-    public WeixinResource(RiskMesDAO riskMesDAO) {
+    public WeixinResource() {
         this.counter = new AtomicLong();
-        this.riskMesDAO = riskMesDAO;
+    }
+
+    public void setWeiXinService(WeiXinService weiXinService) {
+        this.weiXinService = weiXinService;
     }
 
     @GET
@@ -43,7 +44,7 @@ public class WeixinResource {
     @Path("/v1/list")
     @UnitOfWork
     public List<RiskMes> list(@QueryParam("name") Optional<String> name) {
-        return riskMesDAO.list();
+        return weiXinService.getRiskMesDAO().list();
     }
 
     @GET
@@ -54,7 +55,7 @@ public class WeixinResource {
 
         logger.debug("===================== riskId: {}", riskId);
 
-        RiskMes riskMes = riskMesDAO.findById(riskId.get());
+        RiskMes riskMes = weiXinService.getRiskMesDAO().findById(riskId.get());
         if (riskMes == null) {
             throw new WebApplicationException(
                     Response.status(Response.Status.NOT_FOUND.getStatusCode())
@@ -70,21 +71,21 @@ public class WeixinResource {
 
 
 
-    /**
-     * 记录推送起了的信息
-     */
-    @POST
-    @Timed
-    @Path("/v1/riskmes")
-    @UnitOfWork
-    public RiskMes recordSentRisk(@Valid RiskMes message) {
-
-        logger.debug("WeixinSentMessage = " + message);
-        riskMesDAO.saveOrUpdate(message);
-        return message;
-
-
-    }
+//    /**
+//     * 记录推送起了的信息
+//     */
+//    @POST
+//    @Timed
+//    @Path("/v1/riskmes")
+//    @UnitOfWork
+//    public RiskMes recordSentRisk(@Valid RiskMes message) {
+//
+//        logger.debug("WeixinSentMessage = " + message);
+//        weiXinService.getRiskMesDAO().saveOrUpdate(message);
+//        return message;
+//
+//
+//    }
 
 
 

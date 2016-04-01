@@ -1,10 +1,11 @@
 package cn.com.deepdata.frontend;
 
-import cn.com.deepdata.frontend.dao.RiskMesDAO;
-import cn.com.deepdata.frontend.dao.UserDAO;
+import cn.com.deepdata.frontend.dao.HelloDAO;
 import cn.com.deepdata.frontend.example.TemplateHealthCheck;
-import cn.com.deepdata.frontend.resources.example.HelloWorldResource;
 import cn.com.deepdata.frontend.resources.WeixinResource;
+import cn.com.deepdata.frontend.resources.example.HelloWorldResource;
+import cn.com.deepdata.frontend.service.WeiXinService;
+import cn.com.deepdata.frontend.service.impl.WeixinServiceImpl;
 import io.dropwizard.Application;
 import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -28,14 +29,6 @@ public class WeixinApplication extends Application<WeixinConfiguration> {
         bootstrap.addBundle(hibernateBundle);
     }
 
-//    private final HibernateBundle<WeixinConfiguration> hibernateBundle =
-//            new HibernateBundle<WeixinConfiguration>(User.class) {
-//                @Override
-//                public DataSourceFactory getDataSourceFactory(WeixinConfiguration configuration) {
-//                    return configuration.getDataSourceFactory();
-//                }
-//            };
-
     private final HibernateBundle<WeixinConfiguration> hibernateBundle = new ScanningHibernateBundle<WeixinConfiguration>("cn.com.deepdata.frontend.entity") {
         @Override
         public PooledDataSourceFactory getDataSourceFactory(WeixinConfiguration configuration) {
@@ -50,21 +43,24 @@ public class WeixinApplication extends Application<WeixinConfiguration> {
 
         System.out.println("configuration" + configuration);
 
-        final RiskMesDAO riskMesDAO = new RiskMesDAO(hibernateBundle.getSessionFactory());
-        final UserDAO userDAO = new UserDAO(hibernateBundle.getSessionFactory());
+        // init all services
+        final WeiXinService weiXinService = new WeixinServiceImpl(hibernateBundle.getSessionFactory());
 
-        final HelloWorldResource resource = new HelloWorldResource(configuration.getTemplate(), configuration.getDefaultName(),userDAO);
-        environment.jersey().register(resource);
-
-//        final UserResource userResource = new UserResource(userDAO);
-//        environment.jersey().register(userResource);
-
-        final WeixinResource weixinResource = new WeixinResource(riskMesDAO);
+        // init all resources
+        final WeixinResource weixinResource = new WeixinResource();
+        weixinResource.setWeiXinService(weiXinService);
         environment.jersey().register(weixinResource);
 
 
+        // init health check
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("tttt", healthCheck);
+
+        // HelloWord example service
+        final HelloDAO helloDAO = new HelloDAO(hibernateBundle.getSessionFactory());
+        final HelloWorldResource resource = new HelloWorldResource(configuration.getTemplate(), configuration.getDefaultName(), helloDAO);
+        environment.jersey().register(resource);
+
     }
 
 }
