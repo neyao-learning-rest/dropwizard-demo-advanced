@@ -72,7 +72,7 @@ public class WeixinResource {
     }
 
     /**
-     * 记录微信推送历史
+     * 创建微信推送历史
      */
     @POST
     @Timed
@@ -86,6 +86,11 @@ public class WeixinResource {
         return Response.status(Response.Status.OK).build();
     }
 
+    /**
+     * 批量创建微信推送历史
+     * @param warningHistories
+     * @return
+     */
     @POST
     @Timed
     @Path("/warning_histories")
@@ -100,7 +105,7 @@ public class WeixinResource {
 
 
     /**
-     * 更新微信推送历史
+     * 修改微信推送历史
      */
     @PUT
     @Timed
@@ -117,7 +122,7 @@ public class WeixinResource {
     }
 
     /**
-     * 更新微信推送历史
+     * 批量修改微信推送历史
      */
     @PUT
     @Timed
@@ -148,6 +153,11 @@ public class WeixinResource {
         return Response.status(Response.Status.OK).build();
     }
 
+    /**
+     * 批量记录微信推送日志
+     * @param warningLogs
+     * @return
+     */
     @POST
     @Timed
     @Path("/warning_logs")
