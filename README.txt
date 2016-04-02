@@ -6,5 +6,5 @@
 API列表
 --------------------
 
-/weixin 对应 cn.com.deepdata.frontend.resources.WeixinResource
+/weixin 对应 WeixinResource
 -

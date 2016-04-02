@@ -1,29 +1,28 @@
-项目说明
-----
-前端应用的REST API服务，提供一些计算密集型的服务。
+Project Overview
+----------------
+This project show some advanced usages of dropwizard REST framework.
 
-构建方式
-----
-标准的maven工程构建方式
+Created by neyao(hastin@163.com), 2016-04-02
 
-运行方式
-----
-**在开发环境中，以Jar包的方式运行**  
-java -jar target/frontend-api-1.0.0.jar server target\classes\frontend-api.yml
-
-启动之后，在浏览器中访问以下地址，即可访问 HelloWorldResource中定义的资源：
-- http://localhost:8080/hello/v1/say 
-- http://localhost:8080/hello/v2/say 
-
-关键代码
-----
-**核心类**
-- cn.com.deepdata.frontend.WeixinApplication：启动类
-- cn.com.deepdata.frontend.WeixinConfiguration：配置类，由框架自动解析配置文件weixin-backend.yml并获得实例
-- weixin-backend.yml：配置文件
+How to build 
+------------
+mvn package
+java -jar target/dropwizard-1.0.0.jar server target\classes\config.yml
 
 
-**示例代码**
-- cn.com.deepdata.frontend.resources.example.HelloWorldResource：示例代码
+Examples
+--------
+- show the configuration of logging  
+-- see the **logging** section in config.yml
 
+- show hibernate supports  
+-- pom.xml: declares dropwizard-hibernate dependency
+-- org.oursight.dropwizard.demo.MyConfiguration.getDataSourceFactory: shows how to get the configurations of hibernate
+-- hibernate configurations: see the "database" section in config.yml/config-mysql.yml/config-oracle.yml
+-- org/oursight/dropwizard/demo/entity: the entity beans
+-- org.oursight.dropwizard.demo.MyApplication.initialize: shows how to scan a package which contains entity beans
+-- org/oursight/dropwizard/demo/dao the DAO layer
 
+- show java validation
+-- org.oursight.dropwizard.demo.entity.User: declares some javax validation annotations
+-- org.oursight.dropwizard.demo.resources.example.HelloWorldResource.addUser: the @Valid shows how to use it

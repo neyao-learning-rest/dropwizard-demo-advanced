@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.com.deepdata.front</groupId>
-    <artifactId>frontend-api</artifactId>
+    <groupId>org.oursight</groupId>
+    <artifactId>dropwizard-demo-advanced</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>DeepData Frontend API</name>
-    <url>http://www.deepdata.com.cn</url>
+    <name>An advanced dropwizard demo</name>
+    <url>http://www.oursight.org</url>
 
     <properties>
         <dropwizard.version>0.9.2</dropwizard.version>
@@ -110,7 +110,7 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>cn.com.deepdata.frontend.WeixinApplication</mainClass>
+                                    <mainClass>org.oursight.dropwizard.demo.MyApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
