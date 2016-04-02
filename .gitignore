@@ -1,8 +1,13 @@
+# IDE(Eclise,Intellij) files
 *.iml
 *.ipr
 *.iws
 .idea
 .settings
+.classpath
+.project
+
+# Project settings
 target/
 dependency-reduced-pom.xml
 .git/
