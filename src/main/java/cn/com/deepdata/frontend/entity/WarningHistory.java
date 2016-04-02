@@ -19,7 +19,6 @@ import java.util.Date;
  * 存储某个企业上次收到预警的时间的记录表
  * Created by neyao@github.com on 2016/3/30.
  */
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "WARNING_HISTORY")
 @NamedQueries({

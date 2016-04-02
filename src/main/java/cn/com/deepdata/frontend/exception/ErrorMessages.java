@@ -12,7 +12,7 @@ import java.util.List;
 @JsonSnakeCase
 public class ErrorMessages {
 
-    private List<ErrorMessage> errors = new ArrayList();
+    private List<ErrorMessage> errors = new ArrayList<ErrorMessage>();
 
     @JsonProperty
     public ErrorMessage[] getErrors() {

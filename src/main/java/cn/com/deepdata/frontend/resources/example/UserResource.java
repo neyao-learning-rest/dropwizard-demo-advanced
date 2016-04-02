@@ -17,7 +17,8 @@ import java.util.concurrent.atomic.AtomicLong;
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
-    private final AtomicLong counter;
+    @SuppressWarnings("unused")
+	private final AtomicLong counter;
 
     private HelloDAO helloDAO;
 

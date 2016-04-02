@@ -3,7 +3,6 @@ package cn.com.deepdata.frontend.service;
 import cn.com.deepdata.frontend.dao.RiskMesDAO;
 import cn.com.deepdata.frontend.dao.WarningHistoryDAO;
 import cn.com.deepdata.frontend.dao.WarningLogDAO;
-import cn.com.deepdata.frontend.pojo.WeixinSentMessage;
 
 /**
  * 提供微信相关的所有服务

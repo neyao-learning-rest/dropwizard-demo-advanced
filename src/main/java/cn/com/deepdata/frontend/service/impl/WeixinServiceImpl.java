@@ -12,8 +12,6 @@ import org.hibernate.SessionFactory;
  */
 public class WeixinServiceImpl implements WeiXinService {
 
-    private SessionFactory sessionFactory;
-
     private WarningHistoryDAO warningHistoryDAO;
 
     private WarningLogDAO warningLogDAO;
@@ -21,7 +19,6 @@ public class WeixinServiceImpl implements WeiXinService {
     private RiskMesDAO riskMesDAO;
 
     public WeixinServiceImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
         warningHistoryDAO = new WarningHistoryDAO(sessionFactory);
         warningLogDAO = new WarningLogDAO(sessionFactory);
         riskMesDAO = new RiskMesDAO(sessionFactory);

@@ -19,7 +19,6 @@ import java.util.Date;
  *
  * Created by neyao@github.com on 2016/3/30.
  */
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "WXHISDATA")
 @NamedQueries({

@@ -1,10 +1,5 @@
 package cn.com.deepdata.frontend.pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.Length;
-
-import java.math.BigDecimal;
-
 public class WeixinSentMessage {
 
 	public long getUserId() {

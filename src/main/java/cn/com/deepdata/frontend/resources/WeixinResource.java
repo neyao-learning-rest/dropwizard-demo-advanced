@@ -31,7 +31,8 @@ import java.util.concurrent.atomic.AtomicLong;
 public class WeixinResource {
     private static final Logger logger = LoggerFactory.getLogger(WeixinResource.class);
 
-    private final AtomicLong counter;
+    @SuppressWarnings("unused")
+	private final AtomicLong counter;
     private WeiXinService weiXinService;
 
     public WeixinResource() {
